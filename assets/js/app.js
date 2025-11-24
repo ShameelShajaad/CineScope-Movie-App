@@ -8,36 +8,43 @@ let nameBtn = document.getElementById("nameBtn");
 let searchInput = document.getElementById("searchInput");
 let search_btn = document.getElementById("search_btn");
 let movieResults = document.getElementById("movieResults");
+let trendingContainer = document.getElementById("trendingMovies");
+let loadMoreBtn = document.getElementById("loadMoreBtn");
 
-let search_by = "imdb";
+  let search_by = "imdb";
 
-imdbBtn.addEventListener("click", () => {
-  searchInput.placeholder = "Enter IMDb ID";
-  imdbBtn.classList.add("bg-purple-600");
-  imdbBtn.classList.remove("bg-gray-800");
-  nameBtn.classList.remove("bg-purple-600");
-  nameBtn.classList.add("bg-gray-800");
-  search_by = "imdb";
-});
+if (imdbBtn && nameBtn && searchInput && search_btn && movieResults) {
 
-nameBtn.addEventListener("click", () => {
-  searchInput.placeholder = "Enter Movie Name";
-  nameBtn.classList.add("bg-purple-600");
-  nameBtn.classList.remove("bg-gray-800");
-  imdbBtn.classList.remove("bg-purple-600");
-  imdbBtn.classList.add("bg-gray-800");
-  search_by = "name";
-});
+  imdbBtn.addEventListener("click", () => {
+    searchInput.placeholder = "Enter IMDb ID";
+    imdbBtn.classList.add("bg-purple-600");
+    imdbBtn.classList.remove("bg-gray-800");
+    nameBtn.classList.remove("bg-purple-600");
+    nameBtn.classList.add("bg-gray-800");
+    search_by = "imdb";
+  });
 
-search_btn.addEventListener("click", () => {
-  apiCall(searchInput.value);
-});
+  nameBtn.addEventListener("click", () => {
+    searchInput.placeholder = "Enter Movie Name";
+    nameBtn.classList.add("bg-purple-600");
+    nameBtn.classList.remove("bg-gray-800");
+    imdbBtn.classList.remove("bg-purple-600");
+    imdbBtn.classList.add("bg-gray-800");
+    search_by = "name";
+  });
+}
 
-searchInput.addEventListener("keypress", (e) => {
-  if (e.key === "Enter") {
+if (search_btn && searchInput) {
+  search_btn.addEventListener("click", () => {
     apiCall(searchInput.value);
-  }
-});
+  });
+
+  searchInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+      apiCall(searchInput.value);
+    }
+  });
+}
 
 async function apiCall(search) {
   if (search.trim() === "") {
@@ -108,11 +115,9 @@ async function showResult(movies) {
     let director, plot;
 
     if (movie.Director || movie.Plot) {
-      // OMDb search
       director = movie.Director || "N/A";
       plot = movie.Plot || "N/A";
     } else if (movie.id) {
-      // TMDb search
       ({ director, plot } = await getMovieDetails(movie.id));
     } else {
       director = "N/A";
@@ -183,4 +188,75 @@ async function getMovieDetails(movieId) {
   let plot = data.overview || "N/A";
 
   return { director, plot };
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+let trendingMovies = [];
+let displayedCount = 0;
+let currentPage = 1;
+const batchSize = 5;
+
+async function fetchTrendingMovies(page = 1) {
+  const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${tmdbApiKey}&page=${page}`;
+  const res = await fetch(url);
+  const data = await res.json();
+
+  trendingMovies = trendingMovies.concat(data.results); // append new page
+  loadMoreTrending();
+}
+
+async function loadMoreTrending() {
+  const remaining = trendingMovies.slice(
+    displayedCount,
+    displayedCount + batchSize
+  );
+
+  for (let movie of remaining) {
+    const poster = movie.poster_path
+      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+      : "assets/images/movie_placeholder.png";
+
+    const title = movie.title || "Unknown";
+    const year = movie.release_date?.split("-")[0] || "N/A";
+    const rating = movie.vote_average || "N/A";
+    const genres = movie.genre_ids
+      ? movie.genre_ids.map((id) => genreArray[id]).join(", ")
+      : "N/A";
+    const actors = await getMovieCredits(movie.id);
+    const { director, plot } = await getMovieDetails(movie.id);
+
+    trendingContainer.innerHTML += `
+      <div class="relative group rounded overflow-hidden bg-gray-800 transform transition-all duration-300 hover:scale-110 hover:z-10" style="height: 28rem;">
+        <img src="${poster}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
+        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-start overflow-y-auto">
+          <h3 class="text-white font-bold text-lg mb-1">${title}</h3>
+          <p class="text-gray-300 text-sm mb-1">Year: ${year}</p>
+          <p class="text-gray-300 text-sm mb-1">Genre: ${genres}</p>
+          <p class="text-gray-300 text-sm mb-1">Director: ${director}</p>
+          <p class="text-gray-300 text-sm mb-1">Actors: ${actors}</p>
+          <p class="text-gray-300 text-sm mb-2">Plot: ${plot}</p>
+          <div class="flex items-center gap-1 mt-auto">
+            <span class="material-symbols-outlined text-yellow-400">star</span>
+            <span class="text-white font-semibold text-sm">${rating} / 10</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  displayedCount += remaining.length;
+
+  // if displayedCount reaches current movies, fetch next page
+  if (displayedCount >= trendingMovies.length) {
+    currentPage++;
+    fetchTrendingMovies(currentPage);
+  }
+}
+
+// Load first batch
+fetchTrendingMovies();
+
+if (loadMoreBtn) {
+  loadMoreBtn.addEventListener("click", loadMoreTrending);
 }
