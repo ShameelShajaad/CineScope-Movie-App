@@ -4,33 +4,29 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home Page</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
-  <body>
-    <!-- NAVBAR -->
+  <body class="bg-gray-900 text-white font-sans">
+    <!-- HEADER & NAVBAR SECTION -->
 
-    <div>
-      <div class="main_header_div">
-        <div class="left_header_div">
-          <div class="website_logo_div">
-            <img
-              src="assets/icons/film.svg"
-              alt="website_logo"
-              class="website_logo"
-            />
-          </div>
-          <div class="website_name_div">
-            <h1 class="website_name">CineScope</h1>
-          </div>
-        </div>
-        <div class="right_header_div">
-          <div class="navbar_links_div">
-            <div class="navbar_link"><a href="">Home</a></div>
-            <div class="navbar_link"><a href="">Keywords</a></div>
-            <div class="navbar_link"><a href="">Top Rated</a></div>
-            <div class="navbar_link"><a href="">Random</a></div>
-          </div>
-        </div>
+    <header
+      class="flex justify-between items-center px-6 py-4 bg-black/80 sticky top-0 z-50"
+    >
+      <div class="flex items-center gap-2">
+        <img src="assets/icons/film.svg" alt="logo" class="w-10 h-10" />
+        <h1 class="text-2xl font-bold">CineScope</h1>
       </div>
-    </div>
+      <nav class="flex gap-6">
+        <a href="#" class="hover:text-purple-500">Home</a>
+        <a href="#" class="hover:text-purple-500">Keywords</a>
+        <a href="#" class="hover:text-purple-500">Top Rated</a>
+        <a href="#" class="hover:text-purple-500">Random</a>
+      </nav>
+    </header>
+
+
+    <script src="assets/js/app.js"></script>
   </body>
 </html>
