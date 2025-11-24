@@ -1,11 +1,13 @@
 console.log("js loded!");
 
-const apiKey = dcd0f9e;
+const omdbApiKey = "dcd0f9e";
+const tmdbApiKey = "a7a13047807815d4e8c8a123fefcc6cb";
 
 let imdbBtn = document.getElementById("imdbBtn");
 let nameBtn = document.getElementById("nameBtn");
 let searchInput = document.getElementById("searchInput");
 let search_btn = document.getElementById("search_btn");
+let movieResults = document.getElementById("movieResults");
 
 let search_by = "imdb";
 
@@ -38,13 +40,50 @@ searchInput.addEventListener("keypress", (e) => {
 });
 
 async function apiCall(search) {
-  let url = "";
+  if (search.trim() === "") {
+    alert("Please enter a value!");
+    return;
+  }
   if (search_by === "imdb") {
-    url = "https://www.omdbapi.com/?i=" + search + "&apikey=" + apiKey;
+    getByImdb(search);
   } else {
-    url = "https://www.omdbapi.com/?t=" + search + "&apikey=" + apiKey;
+    getByName(search);
+  }
+}
+
+async function getByImdb(id) {
+  let url = "https://www.omdbapi.com/?i=" + id + "&apikey=" + omdbApiKey;
+
+  let res = await fetch(url);
+  let data = await res.json();
+
+  console.log("OMDb Result:", data);
+
+  showResult(data);
+}
+
+async function getByName(name) {
+  let query = name.split(" ").join("+");
+
+  let url =
+    "https://api.themoviedb.org/3/search/movie?query=" +
+    query +
+    "&api_key=" +
+    tmdbApiKey;
+
+  let res = await fetch(url);
+  let data = await res.json();
+
+  console.log("TMDB Result:", data);
+
+  if (data.results.length === 0) {
+    alert("Movie not found!");
+    return;
   }
 
-  let res = await fetch("url");
-  let data = await res.json();
+  showResult(data.results[0]);
+}
+
+function showResult(movie) {
+  console.log("Final Movie Data:", movie);
 }

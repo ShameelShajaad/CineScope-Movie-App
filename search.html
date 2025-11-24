@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Top Rated</title>
+    <title>Search</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -67,9 +67,42 @@
           placeholder="Enter IMDb ID"
           class="px-4 py-2 rounded-l bg-gray-800 text-white border border-gray-600"
         />
-        <button class="px-4 py-2 rounded-r bg-purple-600 hover:bg-purple-700" id="search_btn">
+        <button
+          class="px-4 py-2 rounded-r bg-purple-600 hover:bg-purple-700"
+          id="search_btn"
+        >
           Search
         </button>
+      </div>
+    </section>
+
+    <!-- MOVIE RESULTS SECTION -->
+
+    <section class="px-6 py-12">
+      <h3 class="text-2xl font-bold mb-6">Search Results</h3>
+      <div
+        id="movieResults"
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+      >
+        <div class="relative group rounded overflow-hidden bg-gray-800">
+          <img
+            src=""
+            alt="Movie Name"
+            class="w-full h-64 object-cover group-hover:scale-105 transition"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-3 opacity-0 group-hover:opacity-100 transition"
+          >
+            <h3 class="text-white font-bold text-base">Movie Name</h3>
+            <p class="text-gray-300 text-sm">Year</p>
+            <div class="flex items-center gap-1 mt-1">
+              <span class="material-symbols-outlined text-yellow-400"
+                >star</span
+              >
+              <span class="text-white font-semibold text-sm">Rating / 10</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
