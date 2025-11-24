@@ -1,0 +1,11 @@
+.social_icon {
+  transition: transform 0.3s, filter 0.3s;
+  filter: brightness(0) invert(1);
+}
+.social_icon:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 8px #9810fa);
+}
+.main_icon {
+  filter: brightness(0) invert(1);
+}
