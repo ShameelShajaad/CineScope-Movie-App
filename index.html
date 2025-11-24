@@ -48,15 +48,6 @@
       <p class="mb-6 text-gray-300">
         Explore thousands of movies, from blockbusters to hidden gems.
       </p>
-      <div class="flex gap-2">
-        <input
-          type="text"
-          placeholder="Search movies..."
-          class="px-4 py-2 rounded-l bg-gray-800 text-white border border-gray-600"
-        />
-        <button class="px-4 py-2 rounded-r bg-purple-600 hover:bg-purple-700">
-          Search
-        </button>
       </div>
     </section>
 
@@ -65,25 +56,16 @@
     <section class="px-6 py-12">
       <h3 class="text-2xl font-bold mb-6">Trending Now</h3>
       <div
+        id="trendingMovies"
         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
-      >
-        <!-- MOVIE CARD -->
-
-        <div
-          class="bg-gray-800 rounded overflow-hidden shadow-lg hover:scale-105 transition-transform duration-300"
-          data-aos="fade-up"
+      ></div>
+      <div class="flex justify-center mt-6">
+        <button
+          id="loadMoreBtn"
+          class="px-6 py-2 bg-purple-600 hover:bg-purple-700 rounded"
         >
-          <img
-            src="assets/images/movie1.jpg"
-            alt="Movie 1"
-            class="w-full h-64 object-cover"
-          />
-          <div class="p-2">
-            <h4 class="font-semibold text-lg">Movie Title</h4>
-          </div>
-        </div>
-
-        <!-- ////////////////////////// -->
+          Load More
+        </button>
       </div>
     </section>
 

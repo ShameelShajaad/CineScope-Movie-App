@@ -102,19 +102,34 @@ async function showResult(movies) {
     let genres = movie.genre_ids
       ? movie.genre_ids.map((id) => genreArray[id]).join(", ")
       : "N/A";
+
     let actors = movie.id ? await getMovieCredits(movie.id) : "N/A";
 
+    let director, plot;
+
+    if (movie.Director || movie.Plot) {
+      // OMDb search
+      director = movie.Director || "N/A";
+      plot = movie.Plot || "N/A";
+    } else if (movie.id) {
+      // TMDb search
+      ({ director, plot } = await getMovieDetails(movie.id));
+    } else {
+      director = "N/A";
+      plot = "N/A";
+    }
+
     movieResults.innerHTML += `
-      <div class="relative group rounded overflow-hidden bg-gray-800 transform transition-all duration-300 hover:scale-105 hover:z-10" style="height: 28rem;">
-        <img src="${poster}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"/>
-        <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-        <div class="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-colors duration-300"></div>
-        <div class="absolute inset-0 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-          <h3 class="text-white font-bold text-lg">${title}</h3>
-          <p class="text-gray-300 text-sm">Year: ${year}</p>
-          <p class="text-gray-300 text-sm">Genre: ${genres}</p>
-          <p class="text-gray-300 text-sm">Actors: ${actors}</p>
-          <div class="flex items-center gap-1 mt-1">
+      <div class="relative group rounded overflow-hidden bg-gray-800 transform transition-all duration-300 hover:scale-110 hover:z-10" style="height: 28rem;">
+        <img src="${poster}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
+        <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-start overflow-y-auto">
+          <h3 class="text-white font-bold text-lg mb-1">${title}</h3>
+          <p class="text-gray-300 text-sm mb-1">Year: ${year}</p>
+          <p class="text-gray-300 text-sm mb-1">Genre: ${genres}</p>
+          <p class="text-gray-300 text-sm mb-1">Director: ${director}</p>
+          <p class="text-gray-300 text-sm mb-1">Actors: ${actors}</p>
+          <p class="text-gray-300 text-sm mb-2">Plot: ${plot}</p>
+          <div class="flex items-center gap-1 mt-auto">
             <span class="material-symbols-outlined text-yellow-400">star</span>
             <span class="text-white font-semibold text-sm">${rating} / 10</span>
           </div>
@@ -156,4 +171,16 @@ async function getMovieCredits(movieId) {
       .map((a) => a.name)
       .join(", ") || "N/A";
   return actors;
+}
+async function getMovieDetails(movieId) {
+  let url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${tmdbApiKey}&append_to_response=credits`;
+  let res = await fetch(url);
+  let data = await res.json();
+
+  let director =
+    data.credits?.crew?.find((c) => c.job === "Director")?.name || "N/A";
+
+  let plot = data.overview || "N/A";
+
+  return { director, plot };
 }
