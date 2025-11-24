@@ -84,22 +84,26 @@
         id="movieResults"
         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
       >
-        <div class="relative group rounded overflow-hidden bg-gray-800">
+        <div
+          class="relative group rounded overflow-hidden bg-gray-800 transform transition-all duration-300 hover:scale-110 hover:z-10"
+        >
           <img
-            src=""
+            src="poster_url"
             alt="Movie Name"
-            class="w-full h-64 object-cover group-hover:scale-105 transition"
+            class="w-full h-64 object-cover"
           />
+          <!-- Overlay with info -->
           <div
-            class="absolute inset-0 bg-black bg-opacity-70 flex flex-col justify-end p-3 opacity-0 group-hover:opacity-100 transition"
+            class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-end p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
           >
-            <h3 class="text-white font-bold text-base">Movie Name</h3>
-            <p class="text-gray-300 text-sm">Year</p>
+            <h3 class="text-white font-bold text-lg">Movie Title</h3>
+            <p class="text-gray-300 text-sm">Genre: Action, Adventure</p>
+            <p class="text-gray-300 text-sm">Actors: Actor1, Actor2</p>
             <div class="flex items-center gap-1 mt-1">
               <span class="material-symbols-outlined text-yellow-400"
                 >star</span
               >
-              <span class="text-white font-semibold text-sm">Rating / 10</span>
+              <span class="text-white font-semibold text-sm">8.5 / 10</span>
             </div>
           </div>
         </div>
