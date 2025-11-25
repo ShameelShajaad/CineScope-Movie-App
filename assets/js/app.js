@@ -267,6 +267,17 @@ keyword_search_btn.addEventListener("click", () => {
   isAValidGenre(keyword_search_field.value);
 });
 
+keyword_search_field.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    isAValidGenre(keyword_search_field.value);
+  }
+});
+
+
+
+
+
+
 function isAValidGenre(genre_value) {
   genre_value = genre_value.trim().toLowerCase();
 
