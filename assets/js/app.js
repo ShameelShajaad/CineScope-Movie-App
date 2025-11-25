@@ -244,17 +244,15 @@ async function loadMoreTrending() {
       </div>
     `;
   }
-
+  
   displayedCount += remaining.length;
 
-  // if displayedCount reaches current movies, fetch next page
   if (displayedCount >= trendingMovies.length) {
     currentPage++;
     fetchTrendingMovies(currentPage);
   }
 }
 
-// Load first batch
 fetchTrendingMovies();
 
 if (loadMoreBtn) {
