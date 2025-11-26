@@ -272,7 +272,6 @@ if (trendingContainer) {
 
 ///////////////////////////////////////////////////////////////////////////////////////
 
-// Keyword search
 if (keyword_search_btn && keyword_search_field) {
   keyword_search_btn.addEventListener("click", () => {
     isAValidGenre(keyword_search_field.value);
