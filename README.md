@@ -54,22 +54,23 @@ This project was developed as part of the **Internet Technologies final coursewo
 ## 📂 Project Structure
 
 CineScope/  
-├── index.html           # Home page – trending movies  
-├── top_rated.html       # Top rated movies  
-├── keyword.html         # Browse by genre/keywords  
-├── search.html          # Search by IMDb ID or movie name  
-│  
-├── js/  
-│   ├── homepage.js  
-│   ├── top_rated.js  
-│   ├── keyword.js  
-│   └── search.js  
-│  
-├── css/  
-│   └── style.css        # Custom styling  
-│  
-└── assets/              # Icons, images, logos, etc.  
-
+├── index.html  
+├── keyword.html  
+├── top_rated.html  
+├── search.html  
+├── assets/  
+│   ├── css/  
+│   │   └── style.css  
+│   ├── js/  
+│   │   ├── homepage.js  
+│   │   ├── keyword.js  
+│   │   ├── top_rated.js  
+│   │   └── search.js  
+│   ├── icons/  
+│   │   └── *.svg  
+│   └── images/
+│       └── *.png  
+└── README.md
 
 ---
 
@@ -108,7 +109,6 @@ git clone https://github.com/ShameelShajaad/CineScope-Movie-App.git
 
 ## 📸 Screenshots
 
-*(Add screenshots here after hosting the site)*  
 
 ---
 
