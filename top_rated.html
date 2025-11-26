@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Top Rated</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body class="bg-gray-900 text-white font-sans">
+    <!-- HEADER & NAVBAR SECTION -->
+
+    <header
+      class="flex justify-between items-center px-6 py-4 bg-black/80 sticky top-0"
+    >
+      <div class="flex items-center gap-2">
+        <a href="index.html">
+          <img
+            src="assets/icons/film.svg"
+            alt="logo"
+            class="w-8 h-8 main_icon"
+          />
+        </a>
+        <h1 class="text-2xl font-bold website_name">CineScope</h1>
+      </div>
+      <nav class="flex gap-6">
+        <a href="index.html" class="hover:text-purple-500 navbar_element"
+          >Home</a
+        >
+        <a href="keyword.html" class="hover:text-purple-500 navbar_element"
+          >Keywords</a
+        >
+        <a href="top_rated.html" class="text-purple-600 navbar_element"
+          >Top Rated</a
+        >
+        <a href="search.html" class="hover:text-purple-500 navbar_element"
+          >Search</a
+        >
+      </nav>
+    </header>
+
+    <!-- TOP RATED MOVIES SECTION -->
+
+    <section
+      class="flex flex-col items-center justify-center text-center py-20 bg-gradient-to-b from-black/80 to-black"
+      style="
+        background-image: url('assets/images/background_image_1.png');
+        background-size: contain;
+        background-position: center;
+      "
+    >
+      <h2 class="text-5xl font-extrabold mb-4 main_heading">
+        Explore Some of the Popular Movies
+      </h2>
+    </section>
+    <br />
+    <br />
+    <h3
+      class="text-2xl font-bold mb-6 text-center font-extrabold results_title"
+    >
+      Top Rated Movies
+    </h3>
+    <div
+      id="TopRatedMovies"
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+    ></div>
+    <div class="flex justify-center mt-6 mb-6">
+      <button
+        id="topRatedloadMoreBtn"
+        class="px-6 py-2 bg-purple-600 hover:bg-purple-700 rounded load_more_btn"
+      >
+        Load More
+      </button>
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer
+      class="flex flex-col items-center gap-4 py-6 bg-black/80 border-t border-gray-700"
+    >
+      <!-- SOCIAL LINKS -->
+
+      <div class="flex gap-6">
+        <a
+          href="https://www.instagram.com/shameel_shajaad/"
+          target="_blank"
+          class="hover:scale-110 transition-transform"
+        >
+          <img
+            src="assets/icons/instagram.svg"
+            alt="Instagram"
+            class="w-6 h-6 social_icon"
+          />
+        </a>
+
+        <a
+          href="https://web.facebook.com/profile.php?id=61582577528512"
+          target="_blank"
+          class="hover:scale-110 transition-transform"
+        >
+          <img
+            src="assets/icons/facebook.svg"
+            alt="Facebook"
+            class="w-6 h-6 social_icon"
+          />
+        </a>
+
+        <a
+          href="https://github.com/ShameelShajaad"
+          target="_blank"
+          class="hover:scale-110 transition-transform"
+        >
+          <img
+            src="assets/icons/github.svg"
+            alt="GitHub"
+            class="w-6 h-6 social_icon"
+          />
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/shameel-shajaad/"
+          target="_blank"
+          class="hover:scale-110 transition-transform"
+        >
+          <img
+            src="assets/icons/linkedin.svg"
+            alt="LinkedIn"
+            class="w-6 h-6 social_icon"
+          />
+        </a>
+      </div>
+
+      <p class="text-gray-400 text-sm">
+        © 2025 Developed by <span class="font-semibold">Shameel Shajaad</span>
+      </p>
+    </footer>
+
+    <script src="assets/js/top_rated.js"></script>
+  </body>
+</html>
