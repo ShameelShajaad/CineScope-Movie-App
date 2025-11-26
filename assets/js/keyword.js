@@ -1,4 +1,4 @@
-console.log("js loded!");
+console.log("keyword js loded!");
 
 const tmdbApiKey = "a7a13047807815d4e8c8a123fefcc6cb";
 

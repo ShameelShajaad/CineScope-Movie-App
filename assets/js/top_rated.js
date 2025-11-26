@@ -1,28 +1,31 @@
-console.log("homepage js loded!");
+console.log("top_rated js loded!");
 
 const tmdbApiKey = "a7a13047807815d4e8c8a123fefcc6cb";
 
-let trendingContainer = document.getElementById("trendingMovies");
-let loadMoreBtn = document.getElementById("loadMoreBtn");
 
-let trendingMovies = [];
-let displayedCount = 0;
-let currentPage = 1;
-const batchSize = 5;
 
-async function fetchTrendingMovies(page = 1) {
-  const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${tmdbApiKey}&page=${page}`;
+let topRatedContainer = document.getElementById("TopRatedMovies");
+let topRatedLoadBtn = document.getElementById("topRatedloadMoreBtn");
+
+
+let topRatedMovies = [];
+let topRatedDisplayedCount = 0;
+let topRatedCurrentPage = 1;
+let topRatedBatchSize = 5;
+
+async function fetchTopRatedMovies(page = 1) {
+  const url = `https://api.themoviedb.org/3/movie/top_rated?api_key=${tmdbApiKey}&page=${page}`;
   const res = await fetch(url);
   const data = await res.json();
 
-  trendingMovies = trendingMovies.concat(data.results);
-  loadMoreTrending();
+  topRatedMovies = topRatedMovies.concat(data.results);
+  loadMoreTopRated();
 }
 
-async function loadMoreTrending() {
-  const remaining = trendingMovies.slice(
-    displayedCount,
-    displayedCount + batchSize
+async function loadMoreTopRated() {
+  let remaining = topRatedMovies.slice(
+    topRatedDisplayedCount,
+    topRatedDisplayedCount + topRatedBatchSize
   );
 
   for (let movie of remaining) {
@@ -39,7 +42,7 @@ async function loadMoreTrending() {
     const actors = await getMovieCredits(movie.id);
     const { director, plot } = await getMovieDetails(movie.id);
 
-    trendingContainer.innerHTML += `
+    topRatedContainer.innerHTML += `
       <div class="relative group rounded overflow-hidden bg-gray-800 transform transition-all duration-300 hover:scale-110 hover:z-10" style="height: 28rem;">
         <img src="${poster}" alt="${title}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
         <div class="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4 flex flex-col justify-start overflow-y-auto">
@@ -58,18 +61,20 @@ async function loadMoreTrending() {
     `;
   }
 
-  displayedCount += remaining.length;
+  topRatedDisplayedCount += remaining.length;
 
-  if (displayedCount >= trendingMovies.length) {
-    currentPage++;
-    fetchTrendingMovies(currentPage);
+  if (topRatedDisplayedCount >= topRatedMovies.length) {
+    topRatedCurrentPage++;
+    fetchTopRatedMovies(topRatedCurrentPage);
   }
 }
 
-if (trendingContainer) {
-  fetchTrendingMovies();
-  if (loadMoreBtn) loadMoreBtn.addEventListener("click", loadMoreTrending);
+fetchTopRatedMovies();
+
+if (topRatedLoadBtn) {
+  topRatedLoadBtn.addEventListener("click", loadMoreTopRated);
 }
+
 
 let genreArray = {
   28: "Action",
