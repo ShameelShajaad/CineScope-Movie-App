@@ -1,3 +1,8 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
 .social_icon {
   transition: transform 0.3s, filter 0.3s;
   filter: brightness(0) invert(1);
@@ -8,4 +13,13 @@
 }
 .main_icon {
   filter: brightness(0) invert(1);
+}
+.website_name{
+  font-family: "Science Gothic", sans-serif;
+  /* font-weight: normal; */
+}
+
+.main_heading{
+  font-family: "Merriweather", serif;
+  font-weight: 900;
 }
