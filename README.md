@@ -109,19 +109,19 @@ git clone https://github.com/ShameelShajaad/CineScope-Movie-App.git
 
 ## 📸 Screenshots
 
--**HomePage Overview**
+- **HomePage Overview**
 
 ![HomePage Screenshot](assets/screenshots/homapage.png)
 
--**Keyword Overview**
+- **Keyword Overview**
 
 ![Keyword Screenshot](assets/screenshots/keyword.png)
 
--**Top Rated Overview**
+- **Top Rated Overview**
 
 ![Top Rated Screenshot](assets/screenshots/top_rated.png)
 
--**Search Overview**
+- **Search Overview**
 
 ![Search Screenshot](assets/screenshots/search.png)
 
