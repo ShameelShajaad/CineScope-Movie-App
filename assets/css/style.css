@@ -9,6 +9,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
 
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+
 .social_icon {
   transition: transform 0.3s, filter 0.3s;
   filter: brightness(0) invert(1);
@@ -37,4 +41,8 @@
 .keyword_btn{
   font-family: "Pacifico", cursive;
   font-size: 18px;
+}
+.navbar_element{
+  font-family: "Lobster", sans-serif;
+  font-size: 20px;
 }
