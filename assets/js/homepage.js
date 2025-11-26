@@ -11,9 +11,9 @@ let currentPage = 1;
 const batchSize = 5;
 
 async function fetchTrendingMovies(page = 1) {
-  const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${tmdbApiKey}&page=${page}`;
-  const res = await fetch(url);
-  const data = await res.json();
+  let url = `https://api.themoviedb.org/3/trending/movie/day?api_key=${tmdbApiKey}&page=${page}`;
+  let res = await fetch(url);
+  let data = await res.json();
 
   trendingMovies = trendingMovies.concat(data.results);
   loadMoreTrending();
@@ -30,14 +30,14 @@ async function loadMoreTrending() {
       ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
       : "assets/images/movie_placeholder.png";
 
-    const title = movie.title || "Unknown";
-    const year = movie.release_date?.split("-")[0] || "N/A";
-    const rating = movie.vote_average || "N/A";
-    const genres = movie.genre_ids
+    let title = movie.title || "Unknown";
+    let year = movie.release_date?.split("-")[0] || "N/A";
+    let rating = movie.vote_average || "N/A";
+    let genres = movie.genre_ids
       ? movie.genre_ids.map((id) => genreArray[id]).join(", ")
       : "N/A";
-    const actors = await getMovieCredits(movie.id);
-    const { director, plot } = await getMovieDetails(movie.id);
+    let actors = await getMovieCredits(movie.id);
+    let { director, plot } = await getMovieDetails(movie.id);
 
     trendingContainer.innerHTML += `
       <div class="relative group rounded overflow-hidden bg-gray-800 transform transition-all duration-300 hover:scale-110 hover:z-10" style="height: 28rem;">
@@ -66,10 +66,8 @@ async function loadMoreTrending() {
   }
 }
 
-if (trendingContainer) {
-  fetchTrendingMovies();
-  if (loadMoreBtn) loadMoreBtn.addEventListener("click", loadMoreTrending);
-}
+fetchTrendingMovies();
+loadMoreBtn.addEventListener("click", loadMoreTrending);
 
 let genreArray = {
   28: "Action",

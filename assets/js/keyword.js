@@ -2,7 +2,6 @@ console.log("keyword js loded!");
 
 const tmdbApiKey = "a7a13047807815d4e8c8a123fefcc6cb";
 
-
 let keyword_search_btn = document.getElementById("keyword_search_btn");
 let keyword_search_field = document.getElementById("keyword_search_field");
 let keywordContainer = document.getElementById("keywordMovies");
@@ -15,90 +14,87 @@ let keyword_scifi_btn = document.getElementById("keyword_scifi_btn");
 let keyword_thriller_btn = document.getElementById("keyword_thriller_btn");
 let keyword_fantasy_btn = document.getElementById("keyword_fantasy_btn");
 
+keyword_search_btn.addEventListener("click", () => {
+  isAValidGenre(keyword_search_field.value);
+  resetKeywordButtons();
+});
 
-if (keyword_search_btn && keyword_search_field) {
-  keyword_search_btn.addEventListener("click", () => {
+keyword_search_field.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
     isAValidGenre(keyword_search_field.value);
-  });
+    resetKeywordButtons();
+  }
+});
 
-  keyword_search_field.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      isAValidGenre(keyword_search_field.value);
+let keywordButtons = [
+  keyword_action_btn,
+  keyword_comedy_btn,
+  keyword_drama_btn,
+  keyword_horror_btn,
+  keyword_romance_btn,
+  keyword_scifi_btn,
+  keyword_thriller_btn,
+  keyword_fantasy_btn,
+];
+
+function resetKeywordButtons() {
+  keywordButtons.forEach((btn) => {
+    if (btn) {
+      btn.classList.remove("bg-purple-600");
+      btn.classList.add("bg-gray-800");
     }
   });
 }
 
-if (keyword_action_btn) {
-  let keywordButtons = [
-    keyword_action_btn,
-    keyword_comedy_btn,
-    keyword_drama_btn,
-    keyword_horror_btn,
-    keyword_romance_btn,
-    keyword_scifi_btn,
-    keyword_thriller_btn,
-    keyword_fantasy_btn,
-  ];
+keyword_action_btn.addEventListener("click", () => {
+  resetKeywordButtons();
+  keyword_action_btn.classList.add("bg-purple-600");
+  loadKeywordMovies(28);
+});
 
-  function resetKeywordButtons() {
-    keywordButtons.forEach((btn) => {
-      if (btn) {
-        btn.classList.remove("bg-purple-600");
-        btn.classList.add("bg-gray-800");
-      }
-    });
-  }
+keyword_comedy_btn.addEventListener("click", () => {
+  resetKeywordButtons();
+  keyword_comedy_btn.classList.add("bg-purple-600");
+  loadKeywordMovies(35);
+});
 
-  keyword_action_btn.addEventListener("click", () => {
-    resetKeywordButtons();
-    keyword_action_btn.classList.add("bg-purple-600");
-    loadKeywordMovies(28);
-  });
+keyword_drama_btn.addEventListener("click", () => {
+  resetKeywordButtons();
+  keyword_drama_btn.classList.add("bg-purple-600");
+  loadKeywordMovies(18);
+});
 
-  keyword_comedy_btn.addEventListener("click", () => {
-    resetKeywordButtons();
-    keyword_comedy_btn.classList.add("bg-purple-600");
-    loadKeywordMovies(35);
-  });
+keyword_horror_btn.addEventListener("click", () => {
+  resetKeywordButtons();
+  keyword_horror_btn.classList.add("bg-purple-600");
+  loadKeywordMovies(27);
+});
 
-  keyword_drama_btn.addEventListener("click", () => {
-    resetKeywordButtons();
-    keyword_drama_btn.classList.add("bg-purple-600");
-    loadKeywordMovies(18);
-  });
+keyword_romance_btn.addEventListener("click", () => {
+  resetKeywordButtons();
+  keyword_romance_btn.classList.add("bg-purple-600");
+  loadKeywordMovies(10749);
+});
 
-  keyword_horror_btn.addEventListener("click", () => {
-    resetKeywordButtons();
-    keyword_horror_btn.classList.add("bg-purple-600");
-    loadKeywordMovies(27);
-  });
+keyword_scifi_btn.addEventListener("click", () => {
+  resetKeywordButtons();
+  keyword_scifi_btn.classList.add("bg-purple-600");
+  loadKeywordMovies(878);
+});
 
-  keyword_romance_btn.addEventListener("click", () => {
-    resetKeywordButtons();
-    keyword_romance_btn.classList.add("bg-purple-600");
-    loadKeywordMovies(10749);
-  });
+keyword_thriller_btn.addEventListener("click", () => {
+  resetKeywordButtons();
+  keyword_thriller_btn.classList.add("bg-purple-600");
+  loadKeywordMovies(53);
+});
 
-  keyword_scifi_btn.addEventListener("click", () => {
-    resetKeywordButtons();
-    keyword_scifi_btn.classList.add("bg-purple-600");
-    loadKeywordMovies(878);
-  });
+keyword_fantasy_btn.addEventListener("click", () => {
+  resetKeywordButtons();
+  keyword_fantasy_btn.classList.add("bg-purple-600");
+  loadKeywordMovies(14);
+});
 
-  keyword_thriller_btn.addEventListener("click", () => {
-    resetKeywordButtons();
-    keyword_thriller_btn.classList.add("bg-purple-600");
-    loadKeywordMovies(53);
-  });
-
-  keyword_fantasy_btn.addEventListener("click", () => {
-    resetKeywordButtons();
-    keyword_fantasy_btn.classList.add("bg-purple-600");
-    loadKeywordMovies(14);
-  });
-}
-
-function setDefaultValuesToKeywordButtons() {}
+// function setDefaultValuesToKeywordButtons() {}
 
 function isAValidGenre(genre_value) {
   genre_value = genre_value.trim().toLowerCase();
@@ -174,8 +170,6 @@ async function displayKeywordMovies(movies) {
     `;
   }
 }
-
-
 
 let genreArray = {
   28: "Action",

@@ -1,21 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
-
-
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
-
-
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap");
 
 .social_icon {
   transition: transform 0.3s, filter 0.3s;
@@ -28,35 +23,30 @@
 .main_icon {
   filter: brightness(0) invert(1);
 }
-.website_name{
+.website_name {
   font-family: "Science Gothic", sans-serif;
   /* font-weight: normal; */
 }
-
-.main_heading{
+.main_heading {
   font-family: "Merriweather", serif;
   font-weight: 900;
 }
-
-.results_title{
+.results_title {
   font-family: "Stack Sans Notch", sans-serif;
 }
-
-.keyword_btn{
+.keyword_btn {
   font-family: "Pacifico", cursive;
   font-size: 18px;
 }
-.navbar_element{
+.navbar_element {
   font-family: "Lobster", sans-serif;
   font-size: 20px;
 }
-
-.text_field{
+.text_field {
   font-family: "Play", sans-serif;
   font-weight: 700;
 }
-
-.load_more_btn{
+.load_more_btn {
   font-family: "PT Sans Narrow", sans-serif;
   font-weight: 700;
   font-size: 20px;

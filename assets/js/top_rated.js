@@ -2,11 +2,8 @@ console.log("top_rated js loded!");
 
 const tmdbApiKey = "a7a13047807815d4e8c8a123fefcc6cb";
 
-
-
 let topRatedContainer = document.getElementById("TopRatedMovies");
 let topRatedLoadBtn = document.getElementById("topRatedloadMoreBtn");
-
 
 let topRatedMovies = [];
 let topRatedDisplayedCount = 0;
@@ -71,10 +68,7 @@ async function loadMoreTopRated() {
 
 fetchTopRatedMovies();
 
-if (topRatedLoadBtn) {
-  topRatedLoadBtn.addEventListener("click", loadMoreTopRated);
-}
-
+topRatedLoadBtn.addEventListener("click", loadMoreTopRated);
 
 let genreArray = {
   28: "Action",

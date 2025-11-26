@@ -11,37 +11,33 @@ let movieResults = document.getElementById("movieResults");
 
 let search_by = "imdb";
 
-if (imdbBtn && nameBtn && searchInput && search_btn && movieResults) {
-  imdbBtn.addEventListener("click", () => {
-    searchInput.placeholder = "Enter IMDb ID";
-    imdbBtn.classList.add("bg-purple-600");
-    imdbBtn.classList.remove("bg-gray-800");
-    nameBtn.classList.remove("bg-purple-600");
-    nameBtn.classList.add("bg-gray-800");
-    search_by = "imdb";
-  });
+imdbBtn.addEventListener("click", () => {
+  searchInput.placeholder = "Enter IMDb ID";
+  imdbBtn.classList.add("bg-purple-600");
+  imdbBtn.classList.remove("bg-gray-800");
+  nameBtn.classList.remove("bg-purple-600");
+  nameBtn.classList.add("bg-gray-800");
+  search_by = "imdb";
+});
 
-  nameBtn.addEventListener("click", () => {
-    searchInput.placeholder = "Enter Movie Name";
-    nameBtn.classList.add("bg-purple-600");
-    nameBtn.classList.remove("bg-gray-800");
-    imdbBtn.classList.remove("bg-purple-600");
-    imdbBtn.classList.add("bg-gray-800");
-    search_by = "name";
-  });
-}
+nameBtn.addEventListener("click", () => {
+  searchInput.placeholder = "Enter Movie Name";
+  nameBtn.classList.add("bg-purple-600");
+  nameBtn.classList.remove("bg-gray-800");
+  imdbBtn.classList.remove("bg-purple-600");
+  imdbBtn.classList.add("bg-gray-800");
+  search_by = "name";
+});
 
-if (search_btn && searchInput) {
-  search_btn.addEventListener("click", () => {
+search_btn.addEventListener("click", () => {
+  apiCall(searchInput.value);
+});
+
+searchInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
     apiCall(searchInput.value);
-  });
-
-  searchInput.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      apiCall(searchInput.value);
-    }
-  });
-}
+  }
+});
 
 async function apiCall(search) {
   if (search.trim() === "") {
