@@ -90,9 +90,10 @@ git clone https://github.com/ShameelShajaad/CineScope-Movie-App.git
 
 ---
 
-## 🖥️ Open in Browser
+## 🖥️ Open in Browser / Live Demo
 
-- Navigate to the folder and open `index.html` or any page in a modern browser (Chrome, Edge, Firefox)
+- Local: Navigate to the folder and open `index.html` or any page in a modern browser (Chrome, Edge, Firefox)
+- Online: [Visit CineScope]()
 
 ---
 
