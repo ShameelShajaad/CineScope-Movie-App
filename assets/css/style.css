@@ -3,6 +3,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
 
+
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap');
+
 .social_icon {
   transition: transform 0.3s, filter 0.3s;
   filter: brightness(0) invert(1);
@@ -22,4 +25,8 @@
 .main_heading{
   font-family: "Merriweather", serif;
   font-weight: 900;
+}
+
+.results_title{
+  font-family: "Stack Sans Notch", sans-serif;
 }
