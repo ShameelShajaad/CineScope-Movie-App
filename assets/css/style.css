@@ -6,6 +6,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Notch:wght@200..700&display=swap');
 
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 .social_icon {
   transition: transform 0.3s, filter 0.3s;
   filter: brightness(0) invert(1);
@@ -29,4 +32,9 @@
 
 .results_title{
   font-family: "Stack Sans Notch", sans-serif;
+}
+
+.keyword_btn{
+  font-family: "Pacifico", cursive;
+  font-size: 18px;
 }
