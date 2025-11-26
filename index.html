@@ -6,7 +6,6 @@
     <title>Home Page</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
   <body class="bg-gray-900 text-white font-sans">
     <!-- HEADER & NAVBAR SECTION -->
@@ -53,7 +52,9 @@
     <!-- TRENDING MOVIES SECTION -->
 
     <section class="px-6 py-12">
-      <h3 class="text-2xl font-bold mb-6 text-center font-extrabold">Trending Now</h3>
+      <h3 class="text-2xl font-bold mb-6 text-center font-extrabold">
+        Trending Now
+      </h3>
       <div
         id="trendingMovies"
         class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
@@ -130,10 +131,6 @@
       </p>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-      AOS.init({ duration: 800, once: true });
-    </script>
-    <script src="assets/js/app.js"></script>
+    <script src="assets/js/homepage.js"></script>
   </body>
 </html>
