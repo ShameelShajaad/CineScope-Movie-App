@@ -12,6 +12,10 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow:wght@400;700&display=swap');
 
 .social_icon {
   transition: transform 0.3s, filter 0.3s;
@@ -44,5 +48,16 @@
 }
 .navbar_element{
   font-family: "Lobster", sans-serif;
+  font-size: 20px;
+}
+
+.text_field{
+  font-family: "Play", sans-serif;
+  font-weight: 700;
+}
+
+.load_more_btn{
+  font-family: "PT Sans Narrow", sans-serif;
+  font-weight: 700;
   font-size: 20px;
 }
