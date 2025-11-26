@@ -68,9 +68,9 @@ CineScope/
 │   │   └── search.js  
 │   ├── icons/  
 │   │   └── *.svg  
-│   └── images/
+│   └── images/  
 │       └── *.png  
-└── README.md
+└── README.md  
 
 ---
 
@@ -87,7 +87,6 @@ CineScope/
 ```bash
 git clone https://github.com/ShameelShajaad/CineScope-Movie-App.git
 ```
-
 
 ---
 
@@ -109,6 +108,13 @@ git clone https://github.com/ShameelShajaad/CineScope-Movie-App.git
 
 ## 📸 Screenshots
 
+![HomePage Screenshot](assets/screenshots/homepage.png)
+
+![Keyword Screenshot](assets/screenshots/keyword.png)
+
+![Top Rated Screenshot](assets/screenshots/top_rated.png)
+
+![Search Screenshot](assets/screenshots/search.png)
 
 ---
 
